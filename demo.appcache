@@ -1,0 +1,12 @@
+CACHE MANIFEST
+# v1.0.0
+/video/BD7DE019F4F898BE2AE78F4B352B8CF6.mp4
+/video/654020.mp4
+
+
+NETWORK:
+/
+/index.htm
+
+FALLBACK:
+/html/ /offline.html
