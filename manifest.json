@@ -1,0 +1,17 @@
+{
+  "name": "鸡音",
+  "short_name": "Chickmusic",
+  "description": "记录美好生活",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://lf1-cdn-tos.bytegoofy.com/goofy/ies/douyin_web/public/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
