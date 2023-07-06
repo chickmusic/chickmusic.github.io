@@ -3,6 +3,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    min-height: 100vh; /* 添加这一行 */
+    display: flex; /* 添加这一行 */
+    flex-direction: column; /* 添加这一行 */
 }
 h1 {
     color: #333;
@@ -30,9 +33,7 @@ footer {
     color: #fff;
     padding: 20px 0;
     text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    margin-top: auto; /* 添加这一行 */
 }
 footer a {
     color: #fff;
