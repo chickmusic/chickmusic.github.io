@@ -1,4 +1,4 @@
-var CACHE_NAME = 'my-site-cache-v2';
+var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
   '/',
   'styles.css'
@@ -28,7 +28,9 @@ self.addEventListener('fetch', function(event) {
 
           // 否则，就从网络获取并添加到缓存中
           return fetch(event.request.clone()).then(networkResponse => {
-            cache.put(event.request, networkResponse.clone());
+            if (networkResponse.clone().ok) {
+              cache.put(event.request, networkResponse.clone());
+            }
             return networkResponse;
           });
         });
