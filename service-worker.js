@@ -28,28 +28,8 @@ self.addEventListener('fetch', function(event) {
 
           // 否则，就从网络获取并添加到缓存中
           return fetch(event.request.clone()).then(networkResponse => {
-            if (networkResponse.clone().ok) {
-              const responseToCache = networkResponse.clone();
-
-              const clonedResponse = responseToCache.clone();
-              const reader = clonedResponse.body.getReader();
-              const stream = new ReadableStream({
-                start(controller) {
-                  function push() {
-                    reader.read().then(({done, value}) => {
-                      if (done) {
-                        controller.close();
-                        return;
-                      }
-                      controller.enqueue(value);
-                      push();
-                    })
-                  };
-                  push();
-                }
-              });
-
-              cache.put(event.request, new Response(stream, { headers: responseToCache.headers }));
+            if (networkResponse.ok) {
+              cache.put(event.request, networkResponse.clone());
             }
             return networkResponse;
           });
