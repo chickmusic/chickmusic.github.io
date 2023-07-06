@@ -1,4 +1,4 @@
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'my-site-cache-v2';
 var urlsToCache = [
   '/',
   'styles.css'
@@ -16,19 +16,6 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        // 缓存中有匹配的则返回缓存，否则去请求网络
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
-  );
-});
-self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
 
   // 如果请求的是一个视频文件，就将其缓存起来
@@ -46,6 +33,17 @@ self.addEventListener('fetch', event => {
           });
         });
       })
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request)
+        .then(function(response) {
+          // 缓存中有匹配的则返回缓存，否则去请求网络
+          if (response) {
+            return response;
+          }
+          return fetch(event.request);
+        })
     );
   }
 });
